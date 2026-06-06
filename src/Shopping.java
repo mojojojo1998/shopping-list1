@@ -39,6 +39,7 @@ public class Shopping {
                 break;
             }
         }
+        System.out.println("я");
     }
 }
 
