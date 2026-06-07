@@ -24,16 +24,15 @@ public class Shopping {
                     for (int index = 0; index < productCount; index++) {
                         if (shoppingList[index].equals(productName)) {
                             found = true;
-                            System.out.println("Такой товар уже естёь в корзине");
                             break;
                         }
                     }
-                        if (found) {
-                            System.out.println("Такой товар уже естёь в корзине");
-                        } else{
-                            shoppingList[productCount++] = productName;
-                            System.out.println("Добавлен товар: " + productName);
-                        }
+                    if (found) {
+                        System.out.println("Такой товар уже есть в корзине");
+                    } else {
+                        shoppingList[productCount++] = productName;
+                        System.out.println("Добавлен товар: " + productName);
+                    }
                 } else {
                     System.out.println("Корзина полна. Отложите покупку до следующего раза");
                 }
@@ -46,11 +45,13 @@ public class Shopping {
                     shoppingList[index] = null;
                     System.out.println("Список очищен");
                 }
-            }  else if (actionNumber == 4) {
+            } else if (actionNumber == 4) {
                 System.out.println("Кнопка работает");
-                } else if (actionNumber == 5) {
+            } else if (actionNumber == 5) {
                 System.out.println("Программа завершена");
                 break;
+            } else if (actionNumber > 5) {
+                System.out.println("Такого варианта нет. Попробуйте еще раз");
             }
         }
     }
