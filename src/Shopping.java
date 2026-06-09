@@ -49,7 +49,7 @@ public class Shopping {
             } else if (actionNumber == 5) {
                 System.out.println("Программа завершена");
                 break;
-            } else if (actionNumber > 5) {
+            } else {
                 System.out.println("Такого варианта нет. Попробуйте еще раз");
             }
         }
