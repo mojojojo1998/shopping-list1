@@ -1,11 +1,11 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Shopping {
     public static void main(String[] args) {
 
         System.out.println("Вас приветствует список покупок!");
-        String[] shoppingList = new String[5];
-        int productCount = 0;
+        ArrayList<String> shoppingList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Выберите одну из команд:");
@@ -18,31 +18,30 @@ public class Shopping {
 
             if (actionNumber == 1) {
                 System.out.println("Введите название товара");
-                if (productCount < 5) {
-                    String productName = scanner.next();
-                    boolean found = false;
-                    for (int index = 0; index < productCount; index++) {
-                        if (shoppingList[index].equals(productName)) {
-                            found = true;
-                            break;
-                        }
+                String productName = scanner.next();
+
+                boolean found = false;
+                for (int index = 0; index < shoppingList.size(); index++) {
+                    if (shoppingList.get(index).equals(productName)) {
+                        found = true;
+                        break;
                     }
-                    if (found) {
-                        System.out.println("Такой товар уже есть в корзине");
-                    } else {
-                        shoppingList[productCount++] = productName;
-                        System.out.println("Добавлен товар: " + productName);
-                    }
+                }
+                if (found) {
+                    System.out.println("Такой товар уже есть в корзине");
                 } else {
-                    System.out.println("Корзина полна. Отложите покупку до следующего раза");
+                    shoppingList.add(productName);
+                    String first = shoppingList.get(0);
+                    System.out.println("Добавлен товар: " + productName);
                 }
             } else if (actionNumber == 2) {
-                for (int index = 0; index < productCount; index++) {
-                    System.out.println(index + ". " + shoppingList[index]);
+                for (int index = 0; index < shoppingList.size(); index++) {
+                    System.out.println(index + ". " + shoppingList.get(index));
                 }
             } else if (actionNumber == 3) {
-                for (int index = 0; index < productCount; index++) {
-                    shoppingList[index] = null;
+                for (int index = 0; index < shoppingList.size(); index++) {
+                    shoppingList.clear();
+                    System.out.println(shoppingList);
                     System.out.println("Список очищен");
                 }
             } else if (actionNumber == 4) {
