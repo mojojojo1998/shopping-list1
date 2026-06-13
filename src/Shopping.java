@@ -1,11 +1,11 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Shopping {
     public static void main(String[] args) {
 
         System.out.println("Вас приветствует список покупок!");
-        String[] shoppingList = new String[5];
-        int productCount = 0;
+        ArrayList<String> shoppingList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Выберите одну из команд:");
@@ -17,26 +17,29 @@ public class Shopping {
 
             if (actionNumber == 1) {
                 System.out.println("Введите название товара");
-                if (productCount < 5) {
-                    String productName = scanner.next();
-                    shoppingList[productCount++] = productName;
-                    System.out.println("Добавлен товар:" + productName);
+                String productName = scanner.next();
+
+                boolean found = shoppingList.contains(productName);
+
+                if (found) {
+                    System.out.println("Такой товар уже есть в корзине");
                 } else {
-                    System.out.println("Корзина полна. Отложите покупку до следующего раза");
+                    shoppingList.add(productName);
+                    String first = shoppingList.get(0);
+                    System.out.println("Добавлен товар: " + productName);
                 }
             } else if (actionNumber == 2) {
-                boolean found = false;
-                for (int index = 0; index < productCount; index++) {
-                    System.out.println(index + ". " + shoppingList[index]);
+                for (int index = 0; index < shoppingList.size(); index++) {
+                    System.out.println((index + 1) + ". " + shoppingList.get(index));
                 }
             } else if (actionNumber == 3) {
-                for (int index = 0; index < productCount; index++) {
-                    shoppingList[index] = null;
-                    System.out.println("Список очищен");
-                }
-            } else if (actionNumber == 4) {
+                shoppingList.clear();
+                System.out.println("Список очищен");
+            }  else if (actionNumber == 4) {
                 System.out.println("Программа завершена");
                 break;
+            } else {
+                System.out.println("Такого варианта нет. Попробуйте еще раз");
             }
         }
         System.out.println("я");
