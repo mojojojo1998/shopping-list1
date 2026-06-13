@@ -12,21 +12,15 @@ public class Shopping {
             System.out.println("1. Добавить товар в список");
             System.out.println("2. Показать список");
             System.out.println("3. Очистить список");
-            System.out.println("4. Проверка кнопки");
-            System.out.println("5. Завершить работу");
+            System.out.println("4. Завершить работу");
             int actionNumber = scanner.nextInt();
 
             if (actionNumber == 1) {
                 System.out.println("Введите название товара");
                 String productName = scanner.next();
 
-                boolean found = false;
-                for (int index = 0; index < shoppingList.size(); index++) {
-                    if (shoppingList.get(index).equals(productName)) {
-                        found = true;
-                        break;
-                    }
-                }
+                boolean found = shoppingList.contains(productName);
+
                 if (found) {
                     System.out.println("Такой товар уже есть в корзине");
                 } else {
@@ -36,17 +30,12 @@ public class Shopping {
                 }
             } else if (actionNumber == 2) {
                 for (int index = 0; index < shoppingList.size(); index++) {
-                    System.out.println(index + ". " + shoppingList.get(index));
+                    System.out.println((index + 1) + ". " + shoppingList.get(index));
                 }
             } else if (actionNumber == 3) {
-                for (int index = 0; index < shoppingList.size(); index++) {
-                    shoppingList.clear();
-                    System.out.println(shoppingList);
-                    System.out.println("Список очищен");
-                }
-            } else if (actionNumber == 4) {
-                System.out.println("Кнопка работает");
-            } else if (actionNumber == 5) {
+                shoppingList.clear();
+                System.out.println("Список очищен");
+            }  else if (actionNumber == 4) {
                 System.out.println("Программа завершена");
                 break;
             } else {
